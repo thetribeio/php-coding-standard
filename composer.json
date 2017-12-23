@@ -1,0 +1,17 @@
+{
+    "name": "thetribe/coding-standard",
+    "description": "PHP coding standard",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "theTribe",
+            "homepage": "http://thetribe.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TheTribe\\": "src/"
+        }
+    }
+}
