@@ -170,6 +170,12 @@ class CodingStandard extends Config
                 'void_return' => true,
             ]);
         }
+        
+        if (\version_compare(Application::VERSION, '2.7.0', '>=')) {
+            $rules = array_merge($rules, [
+                'no_unneeded_final_method' => false,
+            ]);
+        }
 
         $this->setRules($rules);
     }
