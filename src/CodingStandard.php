@@ -146,6 +146,7 @@ class CodingStandard extends Config
             'simplified_null_return' => false,
             'strict_comparison' => true,
             'strict_param' => true,
+            'yoda_style' => null,
         ];
 
         if (\version_compare(Application::VERSION, '2.3.0', '>=')) {
