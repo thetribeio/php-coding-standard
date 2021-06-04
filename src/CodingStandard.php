@@ -13,7 +13,7 @@ class CodingStandard extends Config
 
         $this->setRiskyAllowed(true);
 
-        $rules = [
+        $this->setRules([
             '@Symfony' => true,
             'array_syntax' => [
                 'syntax' => 'short',
@@ -22,6 +22,9 @@ class CodingStandard extends Config
                 'spacing' => 'one',
             ],
             'declare_strict_types' => true,
+            'doctrine_annotation_array_assignment' => [
+                'operator' => ':',
+            ],
             'doctrine_annotation_braces' => [
                 'syntax' => 'with_braces',
                 'ignored_tags' => [
@@ -123,9 +126,18 @@ class CodingStandard extends Config
             ],
             'doctrine_annotation_indentation' => true,
             'doctrine_annotation_spaces' => [
-                'around_array_assignments' => false,
+                'after_array_assignments_colon' => false,
+                'after_array_assignments_equals' => false,
+                'before_array_assignments_colon' => false,
+                'before_array_assignments_equals' => false,
             ],
-            'non_printable_character' => true,
+            'list_syntax' => [
+                'syntax' => 'short',
+            ],
+            'no_unneeded_final_method' => false,
+            'non_printable_character' => [
+                'use_escape_sequences_in_strings' => true,
+            ],
             'ordered_class_elements' => [
                 'order' => [
                     'use_trait',
@@ -145,41 +157,14 @@ class CodingStandard extends Config
             ],
             'ordered_imports' => true,
             'phpdoc_align' => false,
+            'phpdoc_types_order' => [
+                'null_adjustment' => 'always_last',
+            ],
             'simplified_null_return' => false,
             'strict_comparison' => true,
             'strict_param' => true,
+            'void_return' => true,
             'yoda_style' => false,
-        ];
-
-        if (\version_compare(Application::VERSION, '2.3.0', '>=')) {
-            $rules = array_merge($rules, [
-                'list_syntax' => [
-                    'syntax' => 'short',
-                ],
-            ]);
-        }
-
-        if (\version_compare(Application::VERSION, '2.4.0', '>=')) {
-            $rules = array_merge($rules, [
-                'doctrine_annotation_array_assignment' => [
-                    'operator' => ':',
-                ],
-                'non_printable_character' => [
-                    'use_escape_sequences_in_strings' => true,
-                ],
-                'phpdoc_types_order' => [
-                    'null_adjustment' => 'always_last',
-                ],
-                'void_return' => true,
-            ]);
-        }
-        
-        if (\version_compare(Application::VERSION, '2.7.0', '>=')) {
-            $rules = array_merge($rules, [
-                'no_unneeded_final_method' => false,
-            ]);
-        }
-
-        $this->setRules($rules);
+        ]);
     }
 }
